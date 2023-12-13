@@ -1,6 +1,5 @@
 import { useState, useEffect, createContext } from "react";
 import clienteAxios from "../../config/axios.jsx";
-import useAuth from "../hooks/useAuth.jsx";
 
 const PacientesContext = createContext();
 
@@ -25,7 +24,7 @@ const PacientesProvider = ({children}) => {
                     Authorization: `Bearer ${usuarioToken}`
                 }
             }
-            const {data} = await clienteAxios('/pacientes', config);
+            const {data} = await clienteAxios('/api/pacientes', config);
             setPacientes(data);
 
         } catch (error) {
@@ -48,7 +47,7 @@ const PacientesProvider = ({children}) => {
             // Actualizar paciente ya registrado
             try {
                 const id = paciente.id;
-                const {data} = await clienteAxios.put(`/pacientes/${id}`, paciente, config);
+                const {data} = await clienteAxios.put(`/api/pacientes/${id}`, paciente, config);
                 const pacientesActualizados = pacientes.map((pacienteState) => (
                     pacienteState._id === data.pacienteGuardado._id ? data.pacienteGuardado : pacienteState
                 ))
@@ -61,7 +60,7 @@ const PacientesProvider = ({children}) => {
         } else {
             // Guardar paciente nuevo
             try {
-                const {data} = await clienteAxios.post('/pacientes', paciente, config);
+                const {data} = await clienteAxios.post('/api/pacientes', paciente, config);
                 const {__v, updatedAt, ...pacienteGuardado} = data;
                 setPacientes([pacienteGuardado, ...pacientes]);
     
@@ -90,7 +89,7 @@ const PacientesProvider = ({children}) => {
             }
 
             try {
-                const {data} = await clienteAxios.delete(`/pacientes/${paciente._id}`, config);
+                const {data} = await clienteAxios.delete(`/api/pacientes/${paciente._id}`, config);
                 console.log(data)
 
                 const pacientesActualizados = pacientes.filter((pacienteState) => (

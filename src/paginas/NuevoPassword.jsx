@@ -41,7 +41,7 @@ const NuevoPassword = () => {
 
     const comprobarToken = async () => {
       try {
-        await clienteAxios(`/veterinarios/recuperar-contrasena/${token}`);
+        await clienteAxios(`/api/veterinarios/recuperar-contrasena/${token}`);
         setTokenValido(true);
         setAlert({
           msg: 'Coloca tu nuevo password',
@@ -79,7 +79,7 @@ const NuevoPassword = () => {
       }
 
       const {data} = await clienteAxios
-      .post(`/veterinarios/recuperar-contrasena/${token}`, {password: nuevoPassword});
+      .post(`/api/veterinarios/recuperar-contrasena/${token}`, {password: nuevoPassword});
       setAlert({
         msg: data.msg,
         error: false

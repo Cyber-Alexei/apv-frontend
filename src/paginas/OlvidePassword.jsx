@@ -20,7 +20,7 @@ const OlvidePassword = () => {
 
     try {
       const {data} = await clienteAxios
-        .post('/veterinarios/recuperar-contrasena', {email})
+        .post('/api/veterinarios/recuperar-contrasena', {email})
       setAlert({
         msg: data.msg,
         error: false

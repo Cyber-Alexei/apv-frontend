@@ -67,7 +67,7 @@ const Registrar = () => {
     // Enviar datos a backend (API) y registrar usuario
     try {
       // Petición
-      await clienteAxios.post('/veterinarios', {nombre, email, password});
+      await clienteAxios.post('/api/veterinarios', {nombre, email, password});
       setAlert({
         msg: 'Cuenta creada correctamente, revisa tu email!',
         error: false

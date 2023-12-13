@@ -36,7 +36,7 @@ const AuthProvider = (props) => {
         }
 
         try {
-            const {data} = await clienteAxios('/veterinarios/perfil', config)
+            const {data} = await clienteAxios('/api/veterinarios/perfil', config)
             setUsuariosAuth(data); // Data de Axios es un objeto
             
             setCargando(false);
@@ -67,7 +67,7 @@ const AuthProvider = (props) => {
         
         try {
 
-            const {data} = await clienteAxios.put(`/veterinarios/perfil/${datos._id}`, datos, config);
+            const {data} = await clienteAxios.put(`/api/veterinarios/perfil/${datos._id}`, datos, config);
 
             if (data._id) {
                 setUsuariosAuth(data);
@@ -92,7 +92,7 @@ const AuthProvider = (props) => {
         }
 
         try {
-            const {data} = await clienteAxios.put('/veterinarios/actualizar-password', datos, config)
+            const {data} = await clienteAxios.put('/api/veterinarios/actualizar-password', datos, config)
             return data;
             
         } catch (error) {
