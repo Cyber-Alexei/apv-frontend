@@ -1,0 +1,28 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@media(max-width: 1100px) {
+    .custom-width {
+        max-width: 380px;
+        min-width: 50px;
+    }
+
+    .tamaño-letra {
+        font-size: 40px;
+    }
+
+    .margen-top {
+        margin-top: 20px;
+    }
+}
+
+@media(min-width: 1101px) {
+    .custom-width {
+        width: 38rem;
+    }
+
+    .tamaño-letra {
+        font-size: 45px;
+    }
+}
